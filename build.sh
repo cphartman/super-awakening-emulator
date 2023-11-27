@@ -3,8 +3,6 @@
 initialPath="$PWD"
 outPath="RetroArch/dist-scripts"
 
-source ../emsdk/emsdk_env.sh 
-
 compileProject() {
     name=$1
     downloadLink=$2
@@ -13,9 +11,9 @@ compileProject() {
     threads=$5
 
     if [ ! -d "$name" ]; then
-        #git clone "$downloadLink" "$name"
+        git clone "$downloadLink" "$name"
         cd "$name"
-        #git submodule update --init --recursive
+        git submodule update --init --recursive
         cd ../
     fi
     cd "$name"
@@ -49,7 +47,7 @@ rm -f *.bc
 cd "$initialPath"
 
 if [ ! -d "EmulatorJS" ]; then
-    git clone "https://github.com/EmulatorJS/EmulatorJS.git" "EmulatorJS"
+    git clone "https://github.com/cphartman/emulatorjs.git" "EmulatorJS"
 fi
 cd EmulatorJS
 git pull
@@ -59,7 +57,7 @@ cd ../
 #compileProject "nestopia" "https://github.com/EmulatorJS/nestopia.git" "./libretro" "Makefile" "no"
 #compileProject "snes9x" "https://github.com/EmulatorJS/snes9x.git" "./libretro" "Makefile" "no"
 #compileProject "gambatte-libretro" "https://github.com/EmulatorJS/gambatte-libretro.git" "./" "Makefile.libretro" "no"
-compileProject "mgba" "https://github.com/EmulatorJS/mgba.git" "./" "Makefile.libretro" "no"
+compileProject "mgba" "https://github.com/cphartman/emulatorjs-mgba.git" "./" "Makefile.libretro" "no"
 #compileProject "beetle-vb-libretro" "https://github.com/EmulatorJS/beetle-vb-libretro.git" "./" "Makefile" "no"
 #compileProject "mupen64plus-libretro-nx" "https://github.com/EmulatorJS/mupen64plus-libretro-nx.git" "./" "Makefile" "no"
 #compileProject "melonDS" "https://github.com/EmulatorJS/melonDS.git" "./" "Makefile" "no"
