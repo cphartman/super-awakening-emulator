@@ -17,8 +17,8 @@ compileProject() {
         cd ../
     fi
     cd "$name"
-    #git pull
-    #git submodule update --recursive
+    git pull
+    git submodule update --recursive
     cd "$makefilePath"
     emmake make clean
     if [ "$threads" = "yes" ] ; then
